@@ -13,7 +13,7 @@ module.exports = app => {
         if(req.params.id) user.id = req.params.id
 
         try {
-            existsOrError(user.mame, 'Nome não informado')
+            existsOrError(user.name, 'Nome não informado')
             existsOrError(user.email, 'E-mail não informado')
             existsOrError(user.password, 'Senha não informado')
             existsOrError(user.confirmPassword, 'Confirmação de senha inválida')
@@ -26,7 +26,7 @@ module.exports = app => {
                 notExistsOrError(userFromDB, 'Usuário já cadastrado')
             }
         } catch (error) {
-            return res.status(400).send(msg)
+            return res.status(400).send(error)
         }
         user.password = encryptPassword(req.body.password)
         delete user.confirmPassword
@@ -46,7 +46,21 @@ module.exports = app => {
     }
 
     const get = (req, res) => {
+        app.db('users')
+            .select('id', 'name', 'email', 'admin')
+            .then(users => res.json(users))
+            .catch(err => res.status(500).send(err))
 
     }
-    return { save }
+
+    const getById = (req, res) => {
+        app.db('users')
+            .select('id', 'name', 'email', 'admin')
+            .where({ id: req.params.id })
+            .first()
+            .then(user => res.json(user))
+            .catch(err => res.status(500).send(err))
+
+    }
+    return { getById, save, get  }
 }
