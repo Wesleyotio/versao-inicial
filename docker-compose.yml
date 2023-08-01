@@ -1,0 +1,82 @@
+version: '3'
+services:
+
+  #Node JS
+  node-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node_service
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8080:8080"
+      - "3000:3000"
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+    networks:
+      - app-network
+
+  db-postgresql:
+    image: postgres:14.8-alpine3.18
+    container_name: db_postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: postgresql_db
+      POSTGRES_USER: postgresql
+      POSTGRES_PASSWORD: secret
+      SERVICE_NAME: db
+      SERVICE_TAGS: postgresql
+    volumes:
+      - ./backend/postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+  # Mongo express    
+  # mongo-express:
+  #   image: mongo-express
+  #   container_name: mongo_express
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     ME_CONFIG_BASICAUTH_USERNAME: myroot
+  #     ME_CONFIG_BASICAUTH_PASSWORD: secret
+  #     ME_CONFIG_MONGODB_PORT: 27017
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: secret
+  #   links:
+  #     - mongo
+  #   networks:
+  #     - app-network
+  # mongoDB
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./backend/mongo:/data/db
+    networks:
+      - app-network
+  
+      
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  mongo:
+    driver: local
+  dbdata:
+    driver: local
