@@ -13,7 +13,10 @@ module.exports = app => {
         const user = { ...req.body }
         if(req.params.id) user.id = req.params.id
 
-        if(!req.originalUrl.starsWith('/users')) user.admin = false
+
+        const result = typeof req.originalUrl === 'string' ? req.originalUrl.startsWith('/users') : "";
+        
+        if(!result) user.admin = false
         if(!req.user || !req.user.admin) user.admin = false 
         
 
