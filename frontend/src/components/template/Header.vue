@@ -4,7 +4,7 @@
             <i class="fa la-lg" :class="icon"></i>
         </a>
         <h1 class="title">
-            {{ title }}
+            <router-link to="/"> {{ title }} </router-link> 
         </h1>
         <UserDropDown v-if="!hideUserDropDown"/>
     </header>
@@ -56,6 +56,11 @@ export default {
     }
 
     .title a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .title a:hover {
         color: #fff;
         text-decoration: none;
     }
