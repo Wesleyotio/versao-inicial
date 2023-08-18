@@ -10,7 +10,7 @@ import router from './config/router'
 Vue.config.productionTip = false
 
 //GAMBIARRA 
-require('axios').defaults.headers.common['Authorization'] = ' bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkrDo28gdGVzdGUiLCJlbWFpbCI6Imphb3Rlc3RlQGVtYWlsLmNvbSIsImFkbWluIjpmYWxzZSwiaWF0IjoxNjkyMTUyOTE3LCJleHAiOjE2OTI0MTIxMTd9.vJA1XRO5-Du6YxxmvgClnnkREcwto-Qgd_ACZ8z2AEE'
+require('axios').defaults.headers.common['Authorization'] = ' bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwibmFtZSI6IkrDo28gdGVzdGUiLCJlbWFpbCI6ImV1bWVzbW8yQGVtYWlsLmNvbSIsImFkbWluIjp0cnVlLCJpYXQiOjE2OTIzMTgyNjEsImV4cCI6MTY5MjU3NzQ2MX0.i9GZusI_ivObggFoOoiGzrjrnS4nx2LmWxRM2ND3hQA'
 
 new Vue({
   store,
