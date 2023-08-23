@@ -1,23 +1,23 @@
-import Vue from "vue";
+import Vue from 'vue';
 
-import Toasted from 'vue-toasted'
+import Toasted from 'vue-toasted';
 
 
 Vue.use(Toasted, {
-    iconPack: 'fontawestome',
+    iconPack: 'fontawesome',
     duration: 3000 
-})
+});
+
+// Vue.Toasted.register(
+//     'defaultSuccess',
+//     (payload) => !payload.msg ? 'Operação realizada com sucesso!': payload.msg,
+//     { type: 'success', icon: 'check'}
+// );
 
 
-Vue.Toasted.register(
-    'defaultSuccess',
-    payload => !payload.msg ? 'Operação realizada com sucesso!': payload.msg,
-    { type: 'success', icon: 'check'}
-)
 
-
-Vue.Toasted.register(
-    'defaultError',
-    payload => !payload.msg ? 'Oops... Erro inesperado.': payload.msg,
-    { type: 'error', icon: 'times'}
-)
+// Vue.Toasted.register(
+//     'defaultError',
+//     (payload) => !payload.msg ? 'Oops... Erro inesperado.': payload.msg,
+//     { type: 'error', icon: 'times'}
+// );
