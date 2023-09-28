@@ -3,16 +3,15 @@
         <b-form>
             <input id="category-id" type="hidden" v-model="category.id"/>
            
-                <b-form-group lang="Nome:" label-for="category-name">
+                <b-form-group label="Nome:" label-for="category-name">
                     <b-form-input id="category-name" type="text"
                         v-model="category.name" required
                         :readonly="mode === 'remove'"
                         placeholder="Informe o Nome da Categoria..."/>      
                 </b-form-group>
-                <b-form-group lang="Categoria Pai:" label-for="category-parentId">
+                <b-form-group label="Categoria Pai:" label-for="category-parentId">
                     <b-form-select v-if="mode === 'save'" 
                         id="category-parentId"
-                        :readonly="mode === 'remove'"
                         :options="categories" v-model="category.parentId" 
                     />
                     <b-form-select v-else 

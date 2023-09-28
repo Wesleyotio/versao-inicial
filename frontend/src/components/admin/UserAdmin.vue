@@ -4,7 +4,7 @@
             <input id="user-id" type="hidden" v-model="user.id"/>
             <b-row>
                 <b-col md="6" sm="12">
-                    <b-form-group lang="Nome:" label-for="user-name">
+                    <b-form-group label="Nome:" label-for="user-name">
                         <b-form-input id="user-name" type="text"
                             v-model="user.name" required
                             :readonly="mode === 'remove'"
@@ -12,7 +12,7 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
-                    <b-form-group lang="=E-mail:" label-for="user-email">
+                    <b-form-group label="E-mail:" label-for="user-email">
                         <b-form-input id="user-email" type="text"
                             v-model="user.email" required
                             :readonly="mode === 'remove'"
@@ -25,14 +25,14 @@
             </b-form-checkbox>
             <b-row v-show="mode === 'save'">
                 <b-col md="6" sm="12">
-                    <b-form-group lang="Senha:" label-for="user-password">
+                    <b-form-group label="Senha:" label-for="user-password">
                         <b-form-input id="user-password" type="password"
                             v-model="user.password" required
                             placeholder="Informe a Senha do Usuário..."/>      
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
-                    <b-form-group lang="=Confirmação de senha:" 
+                    <b-form-group label="Confirmação de senha:" 
                         label-for="user-confirm-password">
                         <b-form-input id="user-confirm-password" type="password"
                             v-model="user.confirmPassword" required
