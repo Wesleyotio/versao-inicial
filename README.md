@@ -40,8 +40,34 @@ docker exec -it node_service zsh
 cd backend
 knex migrate:latest
 ```
+Feito isso, agora temos com inicializar nosso backend pelo comando.
 
+```sh 
+docker exec -it node_service zsh
+cd backend
+npm start
+```
+como saída temos.
 
+```sh
+consign v0.1.6 Initialized in /usr/src/app/backend
++ ./config/passport.js
++ ./config/middlewares.js
++ ./api/validation.js
++ ./api/article.js
++ ./api/auth.js
++ ./api/category.js
++ ./api/queries.js
++ ./api/stat.js
++ ./api/user.js
++ ./schedule/statsSchedule.js
++ ./config/routes.js
+Backend executando...
+```
+Podemos agora inicializar nosso FrontEnd pelo comando.
 
-
-
+```sh 
+docker exec -it node_service zsh
+cd frontend
+npm run serve -- --port=8080
+```
