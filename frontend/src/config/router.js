@@ -25,7 +25,7 @@ const routes = [{
         component: ArticlesByCategory
     },  {
 
-        name: 'ArticlesById',
+        name: 'ArticleById',
         path: '/articles/:id',
         component: ArticleById
     }
