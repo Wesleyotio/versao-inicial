@@ -13,7 +13,7 @@
 
 <script>
 import axios from "axios"
-import { baseAPIUrl, userKey } from "@/global"
+import { baseApiUrl, userKey } from "@/global"
 import { mapState } from 'vuex';
 import Header from './components/template/Header.vue';
 import Menu from './components/template/Menu.vue';
@@ -46,7 +46,7 @@ export default {
 				return
 			}
 
-			const res = await axios.post(`${baseAPIUrl}/validateToken`, userData)
+			const res = await axios.post(`${baseApiUrl}/validateToken`, userData)
 
 			if (res.data) {
 				this.$store.commit('setUser', userData)
